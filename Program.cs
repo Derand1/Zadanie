@@ -29,7 +29,6 @@ namespace ZadanieZukova
         {
             List<Interval> freeIntervals = new List<Interval>();
 
-            // Добавляем интервал с начала дня до первого занятого интервала
             TimeSpan startOfDay = new TimeSpan(0, 0, 0);
             TimeSpan endOfDay = new TimeSpan(24, 0, 0);
             TimeSpan firstIntervalStart = holdIntervals[0].GetStartTime();
@@ -39,7 +38,6 @@ namespace ZadanieZukova
                 freeIntervals.Add(new Interval("00:00", holdIntervals[0].StartTime));
             }
 
-            // Добавляем интервалы между занятыми интервалами
             for (int i = 0; i < holdIntervals.Count - 1; i++)
             {
                 TimeSpan currentEnd = holdIntervals[i].GetEndTime();
@@ -51,7 +49,6 @@ namespace ZadanieZukova
                 }
             }
 
-            // Добавляем интервал от последнего занятого интервала до конца дня
             TimeSpan lastIntervalEnd = holdIntervals[holdIntervals.Count - 1].GetEndTime();
 
             if (lastIntervalEnd < endOfDay)
